@@ -610,7 +610,7 @@ async def set_password_zip(message):
             await message.reply(f"Cannot update the password this is not your download.")
 
 async def start_handler(event):
-    msg = "Hello This is TorToolkit an instance of <a href='https://github.com/yash-dk/TorToolkit-Telegram'>This Repo</a>. Try the repo for yourself and dont forget to put a STAR and fork."
+    msg = "Hello This is TorToolkitX modified by FU"
     await event.reply(msg, parse_mode="html")
 
 def progress_bar(percentage):
@@ -883,10 +883,14 @@ def term_handler(signum, frame, client):
 
 async def booted(client):
     chats = get_val("ALD_USR")
+    TIMEZONE ='Asia/Kolkata'
+    kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
+    jam = kie.strftime('\n📅 Date: %d/%m/%Y\n⏰ Time: %I:%M%P\n🌃 TimeZone: Asia/Kolkata')
     for i in chats:
         try:
-            await client.send_message(i, "The bot is booted and is ready to use.")
-        except Exception as e:
+            await client.send_message(i, f"**🤖 BOT Rebooted 🔄**\n**{jam}**\n\n**ℹ️ Please Re-Download again if Any downloads got Canceled during Reboot**\n\n**#Rebooted**")
+        except Exception:
             torlog.info(f"Not found the entity {i}")
+            
 def command_process(command):
     return re.compile(command,re.IGNORECASE)
